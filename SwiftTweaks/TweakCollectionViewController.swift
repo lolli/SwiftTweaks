@@ -144,7 +144,7 @@ extension TweakCollectionViewController: UITableViewDelegate {
 		case .date:
 			let picker = DatePicker(anyTweak: tweak, tweakStore: self.tweakStore)
 			let cell = tableView.cellForRow(at: indexPath) as! TweakTableCell
-			cell.editingAccessoryView = picker.getDatePicker()
+			cell.setDatePicker(picker.getDatePicker())
 		case .boolean:
 			break
 		}

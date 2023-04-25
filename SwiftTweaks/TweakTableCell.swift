@@ -366,7 +366,7 @@ internal final class TweakTableCell: UITableViewCell {
 			formatter.dateStyle = .short
 			formatter.timeStyle = .none
 			textField.text = formatter.string(from: value)
-			textFieldEnabled = false
+			textFieldEnabled = true
 		case .action:
 			textFieldEnabled = false
 		}
@@ -401,6 +401,10 @@ internal final class TweakTableCell: UITableViewCell {
 		default:
 			assertionFailure("Shouldn't be able to toggle switch if view data isn't Boolean type")
 		}
+	}
+	
+	public func setDatePicker(_ picker: UIDatePicker) {
+		self.textField.inputView = picker
 	}
 
 	@objc private func stepperChanged(_ sender: UIStepper) {
