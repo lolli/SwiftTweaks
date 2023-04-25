@@ -366,7 +366,7 @@ internal final class TweakTableCell: UITableViewCell {
 			formatter.dateStyle = .short
 			formatter.timeStyle = .none
 			textField.text = formatter.string(from: value)
-			textFieldEnabled = false
+			textFieldEnabled = true
 		case .action:
 			textFieldEnabled = false
 		}
