@@ -186,6 +186,7 @@ private final class TweakDiskPersistency {
 				}
 				return StringOption(value: stringOptionString)
 			case .action: return nil
+			case .date: return anyObject as? Date
 			}
 		}
 	}
@@ -203,6 +204,7 @@ private extension TweakViewDataType {
 		case .string: return "string"
 		case .stringList: return "stringlist"
 		case .action: return "action"
+		case .date: return "date"
 		}
 	}
 }
@@ -219,6 +221,7 @@ private extension TweakableType {
 			case .string: return self as! NSString
 			case .stringList: return (self as! StringOption).value as AnyObject
 			case .action: return true as AnyObject
+			case .date: return self as! Date as AnyObject
 		}
 	}
 }

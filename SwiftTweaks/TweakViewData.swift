@@ -18,6 +18,7 @@ internal enum TweakViewData {
 	case string(value: String, defaultValue: String)
 	case stringList(value: StringOption, defaultValue: StringOption, options: [StringOption])
 	case action(value: TweakAction)
+	case date(value: Date)
 
 	init<T: TweakableType>(type: TweakViewDataType, value: T, defaultValue: T, minimum: T?, maximum: T?, stepSize: T?, options: [T]?) {
 		switch type {
@@ -40,6 +41,8 @@ internal enum TweakViewData {
 			self = .stringList(value: value as! StringOption, defaultValue: defaultValue as! StringOption, options: options!.map { $0 as! StringOption })
 		case .action:
 			self = .action(value: value as! TweakAction)
+		case .date:
+			self = .date(value: value as! Date)
 		}
 	}
 
@@ -61,6 +64,8 @@ internal enum TweakViewData {
 			return stringValue
 		case let .action(value: value):
 			return value
+		case .date(value: let value):
+			return value
 		}
 	}
 
@@ -75,6 +80,8 @@ internal enum TweakViewData {
 			return Double(floatValue)
 		case let .doubleTweak(value: doubleValue, _, _, _, _):
 			return doubleValue
+		case .date(value: _):
+			return nil
 		}
 	}
 
@@ -106,6 +113,9 @@ internal enum TweakViewData {
 		case .action:
 			string = ""
 			differsFromDefault = false
+		case .date(value: let value):
+			string = "Date \(value)"
+			differsFromDefault = false
 		}
 		return (string, differsFromDefault)
 	}
@@ -114,7 +124,7 @@ internal enum TweakViewData {
 		switch self {
 		case .integer, .float, .doubleTweak:
 			return true
-		case .boolean, .color, .action, .string, .stringList:
+		case .boolean, .color, .action, .string, .stringList, .date:
 			return false
 		}
 	}
@@ -154,7 +164,7 @@ internal enum TweakViewData {
 		let step: Double?
 		let isInteger: Bool
 		switch self {
-		case .boolean, .color, .action, .stringList, .string:
+		case .boolean, .color, .action, .stringList, .string, .date:
 			return nil
 
 		case let .integer(intValue, intDefaultValue, intMin, intMax, intStep):
