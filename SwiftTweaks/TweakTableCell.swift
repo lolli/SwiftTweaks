@@ -189,6 +189,7 @@ internal final class TweakTableCell: UITableViewCell {
 				origin: CGPoint(x: textFieldFrame.width + TweakTableCell.horizontalPadding, y: 0),
 				size: CGSize(width: disclosureArrow.bounds.width, height: bounds.height)
 			)
+			textField.inputView = getDatePicker()
 			disclosureArrow.frame = disclosureArrowFrame
 			accessory.bounds = textFieldFrame.union(disclosureArrowFrame).integral
 		case .stringList:
@@ -366,7 +367,7 @@ internal final class TweakTableCell: UITableViewCell {
 			formatter.dateStyle = .short
 			formatter.timeStyle = .none
 			textField.text = formatter.string(from: value)
-			textFieldEnabled = true
+			textFieldEnabled = false
 		case .action:
 			textFieldEnabled = false
 		}
@@ -482,5 +483,16 @@ extension TweakTableCell: UITextFieldDelegate {
 		case .boolean, .action, .stringList:
 			assertionFailure("Shouldn't be able to update text field with a Boolean/Action/StringList tweak.")
 		}
+	}
+	
+	public func getDatePicker() -> UIDatePicker {
+		let datePicker = UIDatePicker()
+		datePicker.locale = .current
+		datePicker.addTarget(self, action: #selector(onDateValueChanged(_:)), for: .valueChanged)
+		return datePicker
+	}
+	
+	@objc private func onDateValueChanged(_ datePicker: UIDatePicker) {
+		delegate?.tweakCellDidChangeCurrentValue(self)
 	}
 }
