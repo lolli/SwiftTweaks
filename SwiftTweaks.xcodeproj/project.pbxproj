@@ -89,6 +89,7 @@
 		AA356AF51EB3C5FC0063F4E2 /* TweakAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA356AEF1EB3B5A90063F4E2 /* TweakAction.swift */; };
 		B0E03A551CFF818900BFB1E6 /* TweakDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E03A541CFF818900BFB1E6 /* TweakDebug.swift */; };
 		B0E03A571CFF86E900BFB1E6 /* TweakDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E03A541CFF818900BFB1E6 /* TweakDebug.swift */; };
+		C40B159B29F8415F008D183B /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40B159A29F8415F008D183B /* DatePicker.swift */; };
 		D5CE0BDC1DC7DFC200F79235 /* TweakBindingIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE0BDB1DC7DFC200F79235 /* TweakBindingIdentifier.swift */; };
 		D5CE0BDE1DC7E04A00F79235 /* MultiTweakBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE0BDD1DC7E04A00F79235 /* MultiTweakBinding.swift */; };
 		D5CE0BE01DC7E0D600F79235 /* MultiTweakBindingIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE0BDF1DC7E0D600F79235 /* MultiTweakBindingIdentifier.swift */; };
@@ -163,6 +164,7 @@
 		AA356AEF1EB3B5A90063F4E2 /* TweakAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakAction.swift; sourceTree = "<group>"; };
 		AA356AF31EB3C5B40063F4E2 /* TweakActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakActionTests.swift; sourceTree = "<group>"; };
 		B0E03A541CFF818900BFB1E6 /* TweakDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakDebug.swift; sourceTree = "<group>"; };
+		C40B159A29F8415F008D183B /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		D5CE0BDB1DC7DFC200F79235 /* TweakBindingIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweakBindingIdentifier.swift; sourceTree = "<group>"; };
 		D5CE0BDD1DC7E04A00F79235 /* MultiTweakBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiTweakBinding.swift; sourceTree = "<group>"; };
 		D5CE0BDF1DC7E0D600F79235 /* MultiTweakBindingIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiTweakBindingIdentifier.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				939CB70E218CFE570041E3EA /* HapticsPlayer.swift */,
 				9356CD1E1BF16DFA00D0BBD1 /* TweaksCollectionsListViewController.swift */,
 				938D5EC41BF2C6A700B834E7 /* TweakCollectionViewController.swift */,
+				C40B159A29F8415F008D183B /* DatePicker.swift */,
 				931A24711BFA77FB00E40192 /* TweakColorEditViewController.swift */,
 				932493981EFC5A4000B2E904 /* StringOptionViewController.swift */,
 				931A247D1BFA8F8000E40192 /* ColorRepresentation.swift */,
@@ -516,6 +519,7 @@
 				93212CB21CEE258900AA85D0 /* CALayer+ShadowTweakTemplate.swift in Sources */,
 				93A3AF321BF1677B00CAD43B /* TweakWindow.swift in Sources */,
 				932BA9D41BFA398A001ADFC6 /* UIColor+Tweaks.swift in Sources */,
+				C40B159B29F8415F008D183B /* DatePicker.swift in Sources */,
 				B0E03A551CFF818900BFB1E6 /* TweakDebug.swift in Sources */,
 				939F2CD51CB8097D00345E03 /* TweakGroupTemplateType.swift in Sources */,
 				939F2CE01CB81ED400345E03 /* TweakClusterType.swift in Sources */,

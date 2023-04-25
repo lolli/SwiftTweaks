@@ -58,7 +58,7 @@ fileprivate extension TweakViewDataType {
 		switch self {
 		case .action:
 			return false
-		case .boolean, .integer, .cgFloat, .double, .uiColor, .string, .stringList:
+		case .boolean, .integer, .cgFloat, .double, .uiColor, .string, .stringList, .date:
 			return true
 		}
 	}

@@ -141,11 +141,16 @@ extension TweakCollectionViewController: UITableViewDelegate {
 		case .integer, .cgFloat, .double, .string:
 			let cell = tableView.cellForRow(at: indexPath) as! TweakTableCell
 			cell.startEditingTextField()
+		case .date:
+			let picker = DatePicker(anyTweak: tweak, tweakStore: self.tweakStore)
+			picker.showDatePicker()
 		case .boolean:
 			break
 		}
 	}
-    
+	
+	
+	
     private static let sectionFooterHeight: CGFloat = 27
     
     internal func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
