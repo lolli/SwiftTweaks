@@ -16,7 +16,7 @@ internal protocol TweakTableCellDelegate: AnyObject {
 /// A UITableViewCell that represents a single Tweak<T> in our UI.
 internal final class TweakTableCell: UITableViewCell {
 	internal weak var delegate: TweakTableCellDelegate?
-
+	
 	internal var viewData: TweakViewData? {
 		didSet {
 			accessoryView = accessory
@@ -31,6 +31,7 @@ internal final class TweakTableCell: UITableViewCell {
 	internal var isInFloatingTweakGroupWindow = false
 
 	private var accessory = UIView()
+	private var datePicker: UIDatePicker?
 
 	private let switchControl: UISwitch = {
 		let switchControl = UISwitch()
@@ -365,6 +366,7 @@ internal final class TweakTableCell: UITableViewCell {
 			let formatter = DateFormatter()
 			formatter.dateStyle = .short
 			formatter.timeStyle = .none
+			textField.inputView = self.datePicker
 			textField.text = formatter.string(from: value)
 			textFieldEnabled = true
 		case .action:
@@ -404,7 +406,8 @@ internal final class TweakTableCell: UITableViewCell {
 	}
 	
 	public func setDatePicker(_ picker: UIDatePicker) {
-		self.textField.inputView = picker
+		self.datePicker = picker
+		textField.inputView = self.datePicker
 	}
 
 	@objc private func stepperChanged(_ sender: UIStepper) {
