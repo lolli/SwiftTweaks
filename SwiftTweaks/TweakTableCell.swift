@@ -16,7 +16,7 @@ internal protocol TweakTableCellDelegate: AnyObject {
 /// A UITableViewCell that represents a single Tweak<T> in our UI.
 internal final class TweakTableCell: UITableViewCell {
 	internal weak var delegate: TweakTableCellDelegate?
-	
+
 	internal var viewData: TweakViewData? {
 		didSet {
 			accessoryView = accessory
@@ -31,7 +31,6 @@ internal final class TweakTableCell: UITableViewCell {
 	internal var isInFloatingTweakGroupWindow = false
 
 	private var accessory = UIView()
-	private var datePicker: UIDatePicker?
 
 	private let switchControl: UISwitch = {
 		let switchControl = UISwitch()
@@ -366,9 +365,8 @@ internal final class TweakTableCell: UITableViewCell {
 			let formatter = DateFormatter()
 			formatter.dateStyle = .short
 			formatter.timeStyle = .none
-			textField.inputView = self.datePicker
 			textField.text = formatter.string(from: value)
-			textFieldEnabled = true
+			textFieldEnabled = false
 		case .action:
 			textFieldEnabled = false
 		}
@@ -391,6 +389,11 @@ internal final class TweakTableCell: UITableViewCell {
 	public func startEditingTextField() {
 		self.textField.becomeFirstResponder()
 	}
+	
+	public func startEditing(_ picker: UIDatePicker) {
+		self.textField.inputView = picker
+		self.textField.becomeFirstResponder()
+	}
 
 
 	// MARK: Events
@@ -405,11 +408,6 @@ internal final class TweakTableCell: UITableViewCell {
 		}
 	}
 	
-	public func setDatePicker(_ picker: UIDatePicker) {
-		self.datePicker = picker
-		textField.inputView = self.datePicker
-	}
-
 	@objc private func stepperChanged(_ sender: UIStepper) {
 		switch viewData! {
 		case let .integer(_, defaultValue: defaultValue, min: min, max: max, stepSize: step):
@@ -474,7 +472,14 @@ extension TweakTableCell: UITextFieldDelegate {
 			} else {
 				updateSubviews()
 			}
-		case .boolean, .action, .stringList, .date:
+		case let .date(value: value):
+			if let newValue = textField.text {
+				viewData = TweakViewData(type: .date, value: value, defaultValue: Date(), minimum: nil, maximum: nil, stepSize: nil, options: nil)
+				delegate?.tweakCellDidChangeCurrentValue(self)
+			} else {
+				updateSubviews()
+			}
+		case .boolean, .action, .stringList:
 			assertionFailure("Shouldn't be able to update text field with a Boolean/Action/StringList tweak.")
 		}
 	}
