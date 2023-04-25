@@ -143,7 +143,8 @@ extension TweakCollectionViewController: UITableViewDelegate {
 			cell.startEditingTextField()
 		case .date:
 			let picker = DatePicker(anyTweak: tweak, tweakStore: self.tweakStore)
-			picker.showDatePicker()
+			let cell = tableView.cellForRow(at: indexPath) as! TweakTableCell
+			cell.editingAccessoryView = picker.getDatePicker()
 		case .boolean:
 			break
 		}

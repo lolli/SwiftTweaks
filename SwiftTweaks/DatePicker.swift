@@ -19,11 +19,12 @@ class DatePicker {
 		self.tweakStore = tweakStore
 	}
 	
-	public func showDatePicker() {
+	public func getDatePicker() -> UIDatePicker {
 		let datePicker = UIDatePicker()
 		datePicker.date = tweakStore.currentValueForTweak(self.tweak)
 		datePicker.locale = .current
 		datePicker.addTarget(self, action: #selector(onDateValueChanged(_:)), for: .valueChanged)
+		return datePicker
 	}
 	
 	@objc private func onDateValueChanged(_ datePicker: UIDatePicker) {
